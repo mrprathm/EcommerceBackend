@@ -95,7 +95,7 @@ mvn spring-boot:run
 
 | Role | Email | Password |
 |---|---|---|
-| **Admin** | prathamrathod200@gmail.com | Golu |
+| **Admin** | pratham@gmail.com | Pratham |
 
 ---
 
