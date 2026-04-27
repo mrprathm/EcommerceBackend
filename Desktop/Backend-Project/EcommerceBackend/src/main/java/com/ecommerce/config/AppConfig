@@ -1,0 +1,43 @@
+package com.ecommerce.config;
+
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.*;
+import io.swagger.v3.oas.models.security.*;
+import org.modelmapper.ModelMapper;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class AppConfig {
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
+    @Bean
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+                .info(new Info()
+                        .title("E-Commerce Backend API")
+                        .description("""
+                                Complete E-Commerce REST API built with Spring Boot, MySQL & JWT Authentication.
+                                
+                                👨‍💻 Developed by: Pratham Rathod
+                                📍 Pune, Maharashtra
+                                🔧 Tech: Java | Spring Boot | Hibernate | MySQL | JWT | REST APIs
+                                """)
+                        .version("1.0.0")
+                        .contact(new Contact()
+                                .name("Pratham Rathod")
+                                .email("prathamrathod200@gmail.com")
+                                .url("https://github.com/mrprathm")))
+                .addSecurityItem(new SecurityRequirement().addList("Bearer Authentication"))
+                .components(new io.swagger.v3.oas.models.Components()
+                        .addSecuritySchemes("Bearer Authentication",
+                                new SecurityScheme()
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .bearerFormat("JWT")
+                                        .scheme("bearer")));
+    }
+}
